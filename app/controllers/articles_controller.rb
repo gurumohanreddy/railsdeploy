@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
     # render plain: params[:article].inspect
     @article = Article.new(article_params)
     if @article.save
-      flash[:notice] = "Successfully created..."
+      flash[:success] = "Successfully created..."
       redirect_to article_path(@article)
     else
       render 'new'
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
 
     @article.destroy
 
-    flash[:notice] = "Successfully deleted..."
+    flash[:danger] = "Successfully deleted..."
     redirect_to articles_path
   end
 
@@ -41,7 +41,7 @@ class ArticlesController < ApplicationController
   def update
 
     if @article.update(article_params)
-      flash[:notice] = "Article was Successfully Updated..."
+      flash[:success] = "Article was Successfully Updated..."
       redirect_to article_path(@article)
     else
       render 'edit'
